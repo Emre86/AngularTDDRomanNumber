@@ -24,4 +24,20 @@ describe('RomanNumberComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should emit value on roman Number', () => {
+    spyOn(component.eventRoman, 'emit');
+    component.formGroupRoman.get("roman")?.setValue("I");
+    component.sendRoman();
+    expect(component.eventRoman.emit).toHaveBeenCalled();
+  });
+
+  it('should not emit value on not roman Number', () => {
+    spyOn(component.eventRoman, 'emit');
+    component.formGroupRoman.get("roman")?.setValue("K");
+    component.sendRoman();
+    expect(component.eventRoman.emit).not.toHaveBeenCalled();
+  });
+
+
 });
