@@ -25,7 +25,7 @@ export class RomanNumberComponent implements OnInit {
   sendRoman() {
     if (this.formGroupRoman.get("roman")!.value) {
       let input = this.formGroupRoman.get('roman')?.value as String
-      const regex = new RegExp('^(D?C{0,3})(L?X{0,3})(V?I{0,3})$');
+      const regex = new RegExp('^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$');
       if (input.match(regex)) {
         this.eventRoman.emit(input);
       }

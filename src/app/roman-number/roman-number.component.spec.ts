@@ -136,4 +136,103 @@ describe('RomanNumberComponent', () => {
     component.sendRoman();
     expect(component.eventRoman.emit).toHaveBeenCalled();
   });
+
+  it('should emit a value on roman Number VI', () => {
+    spyOn(component.eventRoman, 'emit');
+    component.formGroupRoman.get("roman")?.setValue("VI");
+    component.sendRoman();
+    expect(component.eventRoman.emit).toHaveBeenCalled();
+  });
+
+  it('should emit a value on roman Number VIII', () => {
+    spyOn(component.eventRoman, 'emit');
+    component.formGroupRoman.get("roman")?.setValue("VIII");
+    component.sendRoman();
+    expect(component.eventRoman.emit).toHaveBeenCalled();
+  });
+
+  it('should emit a value on roman Number XI', () => {
+    spyOn(component.eventRoman, 'emit');
+    component.formGroupRoman.get("roman")?.setValue("XI");
+    component.sendRoman();
+    expect(component.eventRoman.emit).toHaveBeenCalled();
+  });
+
+  it('should emit a value on roman Number XIII', () => {
+    spyOn(component.eventRoman, 'emit');
+    component.formGroupRoman.get("roman")?.setValue("XIII");
+    component.sendRoman();
+    expect(component.eventRoman.emit).toHaveBeenCalled();
+  });
+
+  it('should emit a value on roman Number LX', () => {
+    spyOn(component.eventRoman, 'emit');
+    component.formGroupRoman.get("roman")?.setValue("LX");
+    component.sendRoman();
+    expect(component.eventRoman.emit).toHaveBeenCalled();
+  });
+
+  it('should emit a value on roman Number LXV', () => {
+    spyOn(component.eventRoman, 'emit');
+    component.formGroupRoman.get("roman")?.setValue("LXV");
+    component.sendRoman();
+    expect(component.eventRoman.emit).toHaveBeenCalled();
+  });
+
+  it('should emit a value on roman Number IV', () => {
+    spyOn(component.eventRoman, 'emit');
+    component.formGroupRoman.get("roman")?.setValue("IV");
+    component.sendRoman();
+    expect(component.eventRoman.emit).toHaveBeenCalled();
+  });
+
+  it('should emit a value on roman Number IX', () => {
+    spyOn(component.eventRoman, 'emit');
+    component.formGroupRoman.get("roman")?.setValue("IX");
+    component.sendRoman();
+    expect(component.eventRoman.emit).toHaveBeenCalled();
+  });
+
+  it('should emit a value on roman Number XL', () => {
+    spyOn(component.eventRoman, 'emit');
+    component.formGroupRoman.get("roman")?.setValue("XL");
+    component.sendRoman();
+    expect(component.eventRoman.emit).toHaveBeenCalled();
+  });
+
+  it('should emit a value on roman Number XC', () => {
+    spyOn(component.eventRoman, 'emit');
+    component.formGroupRoman.get("roman")?.setValue("XC");
+    component.sendRoman();
+    expect(component.eventRoman.emit).toHaveBeenCalled();
+  });
+
+  it('should emit a value on roman Number CLIX', () => {
+    spyOn(component.eventRoman, 'emit');
+    component.formGroupRoman.get("roman")?.setValue("CLIX");
+    component.sendRoman();
+    expect(component.eventRoman.emit).toHaveBeenCalled();
+  });
+
+  it('should emit a value on roman Number M', () => {
+    spyOn(component.eventRoman, 'emit');
+    component.formGroupRoman.get("roman")?.setValue("M");
+    component.sendRoman();
+    expect(component.eventRoman.emit).toHaveBeenCalled();
+  });
+
+  it('should emit a value on roman Number MMMM', () => {
+    spyOn(component.eventRoman, 'emit');
+    component.formGroupRoman.get("roman")?.setValue("MMMM");
+    component.sendRoman();
+    expect(component.eventRoman.emit).toHaveBeenCalled();
+  });
+
+  it('should emit a value on roman Number MCCXXXVIII', () => {
+    spyOn(component.eventRoman, 'emit');
+    component.formGroupRoman.get("roman")?.setValue("MCCXXXVIII");
+    component.sendRoman();
+    expect(component.eventRoman.emit).toHaveBeenCalled();
+  });
+
 });
