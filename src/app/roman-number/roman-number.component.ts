@@ -13,13 +13,10 @@ export class RomanNumberComponent implements OnInit {
 
   public formGroupRoman: FormGroup;
 
-  private romanNumbers: Array<string>;
-
   constructor(private formBuilder: FormBuilder) {
     this.formGroupRoman = this.formBuilder.group({
       roman: []
     });
-    this.romanNumbers = ['I', 'V', 'X', 'L', 'C', 'D', 'M']
   }
 
   ngOnInit(): void {
@@ -28,10 +25,8 @@ export class RomanNumberComponent implements OnInit {
   sendRoman() {
     if (this.formGroupRoman.get("roman")!.value) {
       let input = this.formGroupRoman.get('roman')?.value as String
-      let arrayInput = input.split("");
-      const isRoman = (currentNumber: string) => this.romanNumbers.includes(currentNumber)
-      let arrayIsroman = arrayInput.every(isRoman);
-      if (arrayIsroman) {
+      const regex = new RegExp('^(C{0,3})(X{0,3})(I{0,3})$');
+      if (input.match(regex)) {
         this.eventRoman.emit(input);
       }
     }
