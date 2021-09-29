@@ -8,7 +8,7 @@ import { FormControl } from '@angular/forms';
 })
 export class ArabicNumberComponent implements OnInit {
 
-  @Input() arabic = "0"
+  @Input() arabic = 0
 
 
   constructor() {

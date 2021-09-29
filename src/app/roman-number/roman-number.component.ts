@@ -29,42 +29,42 @@ export class RomanNumberComponent implements OnInit {
     this.romanMap.set("VII", 7);
     this.romanMap.set("VIII", 8);
     this.romanMap.set("IX", 9);
-    this.romanMap.set("X", 1);
-    this.romanMap.set("XX", 2);
-    this.romanMap.set("XXX", 3);
-    this.romanMap.set("XL", 4);
-    this.romanMap.set("L", 5);
-    this.romanMap.set("LX", 6);
-    this.romanMap.set("LXX", 7);
-    this.romanMap.set("LXXX", 8);
-    this.romanMap.set("XC", 9);
-    this.romanMap.set("C", 1);
-    this.romanMap.set("CC", 2);
-    this.romanMap.set("CCC", 3);
-    this.romanMap.set("CD", 4);
-    this.romanMap.set("D", 5);
-    this.romanMap.set("DC", 6);
-    this.romanMap.set("DCC", 7);
-    this.romanMap.set("DCCC", 8);
-    this.romanMap.set("CM", 9);
-    this.romanMap.set("M", 1);
-    this.romanMap.set("MM", 2);
-    this.romanMap.set("MMM", 3);
-    this.romanMap.set("MMMM", 4);
+    this.romanMap.set("X", 10);
+    this.romanMap.set("XX", 20);
+    this.romanMap.set("XXX", 30);
+    this.romanMap.set("XL", 40);
+    this.romanMap.set("L", 50);
+    this.romanMap.set("LX", 60);
+    this.romanMap.set("LXX", 70);
+    this.romanMap.set("LXXX", 80);
+    this.romanMap.set("XC", 90);
+    this.romanMap.set("C", 100);
+    this.romanMap.set("CC", 200);
+    this.romanMap.set("CCC", 300);
+    this.romanMap.set("CD", 400);
+    this.romanMap.set("D", 500);
+    this.romanMap.set("DC", 600);
+    this.romanMap.set("DCC", 700);
+    this.romanMap.set("DCCC", 800);
+    this.romanMap.set("CM", 900);
+    this.romanMap.set("M", 1000);
+    this.romanMap.set("MM", 2000);
+    this.romanMap.set("MMM", 3000);
+    this.romanMap.set("MMMM", 4000);
   }
 
   ngOnInit(): void {
   }
 
-  convertToArabic(romanNumbers: Array<string>): string {
-    let result = ""
+  convertToArabic(romanNumbers: Array<string>): number {
+    let result = 0;
     romanNumbers.shift();
 
     for (let entry of romanNumbers) {
-      result += this.romanMap.get(entry);
+      result += this.romanMap.get(entry)!;
     }
 
-    return result.replace(/^[0]{1,3}/, "");
+    return result;
   }
 
   sendArabicNumber() {
