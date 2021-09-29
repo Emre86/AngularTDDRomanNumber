@@ -64,10 +64,10 @@ export class RomanNumberComponent implements OnInit {
       result += this.romanMap.get(entry);
     }
 
-    return result.replace(/[0]{1,3}/, "");
+    return result.replace(/^[0]{1,3}/, "");
   }
 
-  sendRoman() {
+  sendArabicNumber() {
     if (this.formGroupRoman.get("roman")!.value) {
       let input = this.formGroupRoman.get('roman')?.value as String
       const regex = new RegExp('^(M{0,4})(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$');
