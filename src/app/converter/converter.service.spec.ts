@@ -22,182 +22,182 @@ describe('ConverterService', () => {
 
   it('should receive number 0', () => {
     service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(0)
+      expect(convertedNumber).toEqual("")
     }).unsubscribe();
   });
 
-  it('should be 1 for I', () => {
+  it('should be I for I', () => {
     service.sendNumber("I");
     service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(1)
+      expect(convertedNumber).toEqual("I")
     }).unsubscribe();
   });
 
-  it('should be 2 for II', () => {
+  it('should be II for II', () => {
     service.sendNumber("II");
     service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(2)
+      expect(convertedNumber).toEqual("II")
     }).unsubscribe();
   });
 
-  it('should be 3 for III', () => {
+  it('should be III for III', () => {
     service.sendNumber("III");
     service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(3)
+      expect(convertedNumber).toEqual("III")
     }).unsubscribe();
   });
 
-  it('should be 30 for XXX', () => {
+  it('should be XXX for XXX', () => {
     service.sendNumber("XXX");
     service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(30)
+      expect(convertedNumber).toEqual("XXX")
     }).unsubscribe();
   });
 
-  it('should be 300 for CCC', () => {
+  it('should be CCC for CCC', () => {
     service.sendNumber("CCC");
     service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(300)
+      expect(convertedNumber).toEqual("CCC")
     }).unsubscribe();
   });
 
-  it('should be 5 for V', () => {
+  it('should be V for V', () => {
     service.sendNumber("V");
     service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(5)
+      expect(convertedNumber).toEqual("V")
     }).unsubscribe();
   });
 
-  it('should be 50 for L', () => {
+  it('should be L for L', () => {
     service.sendNumber("L");
     service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(50)
+      expect(convertedNumber).toEqual("L")
     }).unsubscribe();
   });
 
-  it('should be 500 for D', () => {
+  it('should be D for D', () => {
     service.sendNumber("D");
     service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(500)
+      expect(convertedNumber).toEqual("D")
     }).unsubscribe();
   });
 
-  it('should be 55 for LV', () => {
+  it('should be LV for LV', () => {
     service.sendNumber("LV");
     service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(55)
+      expect(convertedNumber).toEqual("LV")
     }).unsubscribe();
   });
 
-  it('should be 550 for DL', () => {
+  it('should be DL for DL', () => {
     service.sendNumber("DL");
     service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(550)
+      expect(convertedNumber).toEqual("DL")
     }).unsubscribe();
   });
 
-  it('should be 555 for DLV', () => {
+  it('should be DLV for DLV', () => {
     service.sendNumber("DLV");
     service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(555)
+      expect(convertedNumber).toEqual("DLV")
     }).unsubscribe();
   });
 
-  it('should be 6 for VI', () => {
+  it('should be VI for VI', () => {
     service.sendNumber("VI");
     service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(6)
+      expect(convertedNumber).toEqual("VI")
     }).unsubscribe();
   });
 
-  it('should be 8 for VIII', () => {
+  it('should be VIII for VIII', () => {
     service.sendNumber("VIII");
     service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(8)
+      expect(convertedNumber).toEqual("VIII")
     }).unsubscribe();
   });
 
-  it('should be 11 for XI', () => {
+  it('should be XI for XI', () => {
     service.sendNumber("XI");
     service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(11)
+      expect(convertedNumber).toEqual("XI")
     }).unsubscribe();
   });
 
-  it('should be 13 for XIII', () => {
+  it('should be XIII for XIII', () => {
     service.sendNumber("XIII");
     service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(13)
+      expect(convertedNumber).toEqual("XIII")
     }).unsubscribe();
   });
 
-  it('should be 60 for LX', () => {
+  it('should be LX for LX', () => {
     service.sendNumber("LX");
     service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(60)
+      expect(convertedNumber).toEqual("LX")
     }).unsubscribe();
   });
 
-  it('should be 65 for LXV', () => {
+  it('should be LXV for LXV', () => {
     service.sendNumber("LXV");
     service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(65)
+      expect(convertedNumber).toEqual("LXV")
     }).unsubscribe();
   });
 
-  it('should be 4 for IV', () => {
+  it('should be IV for IV', () => {
     service.sendNumber("IV");
     service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(4)
+      expect(convertedNumber).toEqual("IV")
     }).unsubscribe();
   });
 
-  it('should be 9 for IX', () => {
+  it('should be IX for IX', () => {
     service.sendNumber("IX");
     service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(9)
+      expect(convertedNumber).toEqual("IX")
     }).unsubscribe();
   });
 
-  it('should be 40 for XL', () => {
+  it('should be XL for XL', () => {
     service.sendNumber("XL");
     service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(40)
+      expect(convertedNumber).toEqual("XL")
     }).unsubscribe();
   });
 
-  it('should be 90 for XC', () => {
+  it('should be XC for XC', () => {
     service.sendNumber("XC");
     service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(90)
+      expect(convertedNumber).toEqual("XC")
     }).unsubscribe();
   });
 
-  it('should be 159 for CLIX', () => {
+  it('should be CLIX for CLIX', () => {
     service.sendNumber("CLIX");
     service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(159)
+      expect(convertedNumber).toEqual("CLIX")
     }).unsubscribe();
   });
 
-  it('should be 1000 for M', () => {
+  it('should be M for M', () => {
     service.sendNumber("M");
     service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(1000)
+      expect(convertedNumber).toEqual("M")
     }).unsubscribe();
   });
 
-  it('should be 4000 for MMMM', () => {
+  it('should be MMMM for MMMM', () => {
     service.sendNumber("MMMM");
     service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(4000)
+      expect(convertedNumber).toEqual("MMMM")
     }).unsubscribe();
   });
 
-  it('should be 1238 for MCCXXXVIII', () => {
+  it('should be MCCXXXVIII for MCCXXXVIII', () => {
     service.sendNumber("MCCXXXVIII");
     service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(1238)
+      expect(convertedNumber).toEqual("MCCXXXVIII")
     }).unsubscribe();
   });
 });

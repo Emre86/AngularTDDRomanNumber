@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { ConverterHttpService } from '../converter/converter-http.service';
 import { ConverterService } from '../converter/converter.service';
 
 @Component({
@@ -13,13 +14,15 @@ export class ArabicNumberComponent implements OnInit {
   arabicDigit = 0;
 
   subscription: Subscription;
-  constructor(private converter: ConverterService) {
+  constructor(private converter: ConverterService, private converterHttp: ConverterHttpService) {
     this.subscription = Subscription.EMPTY;
   }
 
   ngOnInit(): void {
     this.subscription = this.converter.receiveNumber().subscribe((digit) => {
-      this.arabicDigit = digit
+      this.converterHttp.getArabicDigit(digit).subscribe((reponse) => {
+        this.arabicDigit = reponse.digit
+      });
     });
   }
 
