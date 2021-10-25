@@ -7,10 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'myRomanNumber';
-  romanToArabic = [""];
-
-  receiptRoman(event: Array<string>) {
-    this.romanToArabic = event;
-  }
 
 }
