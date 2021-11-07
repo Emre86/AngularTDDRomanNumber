@@ -1,6 +1,11 @@
 import { TestBed } from '@angular/core/testing';
-
 import { ConverterService } from './converter.service';
+import { take } from 'rxjs/operators';
+
+async function getConverted(service: ConverterService, convertNumber: string) {
+  service.sendNumber(convertNumber);
+  return await service.receiveNumber().pipe(take(1)).toPromise();
+}
 
 describe('ConverterService', () => {
   let service: ConverterService;
@@ -20,184 +25,129 @@ describe('ConverterService', () => {
     expect(service.sendNumber).toHaveBeenCalled();
   });
 
-  it('should receive number 0', () => {
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(0)
-    }).unsubscribe();
-  });
-
-  it('should be 1 for I', () => {
+  it('should be 1 for I', async () => {
     service.sendNumber("I");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(1)
-    }).unsubscribe();
+    expect(await getConverted(service, "I")).toBe(1);
   });
 
-  it('should be 2 for II', () => {
+  it('should be 2 for II', async () => {
     service.sendNumber("II");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(2)
-    }).unsubscribe();
+    expect(await getConverted(service, "II")).toBe(2);
   });
 
-  it('should be 3 for III', () => {
+  it('should be 3 for III', async () => {
     service.sendNumber("III");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(3)
-    }).unsubscribe();
+    expect(await getConverted(service, "III")).toBe(3);
   });
 
-  it('should be 30 for XXX', () => {
+  it('should be 30 for XXX', async () => {
     service.sendNumber("XXX");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(30)
-    }).unsubscribe();
+    expect(await getConverted(service, "XXX")).toBe(30);
+
   });
 
-  it('should be 300 for CCC', () => {
+  it('should be 300 for CCC', async () => {
     service.sendNumber("CCC");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(300)
-    }).unsubscribe();
+    expect(await getConverted(service, "CCC")).toBe(300);
   });
 
-  it('should be 5 for V', () => {
+  it('should be 5 for V', async () => {
     service.sendNumber("V");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(5)
-    }).unsubscribe();
+    expect(await getConverted(service, "V")).toBe(5);
   });
 
-  it('should be 50 for L', () => {
+  it('should be 50 for L', async () => {
     service.sendNumber("L");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(50)
-    }).unsubscribe();
+    expect(await getConverted(service, "L")).toBe(50);
   });
 
-  it('should be 500 for D', () => {
+  it('should be 500 for D', async () => {
     service.sendNumber("D");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(500)
-    }).unsubscribe();
+    expect(await getConverted(service, "D")).toBe(500);
   });
 
-  it('should be 55 for LV', () => {
+  it('should be 55 for LV', async () => {
     service.sendNumber("LV");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(55)
-    }).unsubscribe();
+    expect(await getConverted(service, "LV")).toBe(55);
   });
 
-  it('should be 550 for DL', () => {
+  it('should be 550 for DL', async () => {
     service.sendNumber("DL");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(550)
-    }).unsubscribe();
+    expect(await getConverted(service, "DL")).toBe(550);
   });
 
-  it('should be 555 for DLV', () => {
+  it('should be 555 for DLV', async () => {
     service.sendNumber("DLV");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(555)
-    }).unsubscribe();
+    expect(await getConverted(service, "DLV")).toBe(555);
   });
 
-  it('should be 6 for VI', () => {
+  it('should be 6 for VI', async () => {
     service.sendNumber("VI");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(6)
-    }).unsubscribe();
+    expect(await getConverted(service, "VI")).toBe(6);
   });
 
-  it('should be 8 for VIII', () => {
+  it('should be 8 for VIII', async () => {
     service.sendNumber("VIII");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(8)
-    }).unsubscribe();
+    expect(await getConverted(service, "VIII")).toBe(8);
   });
 
-  it('should be 11 for XI', () => {
+  it('should be 11 for XI', async () => {
     service.sendNumber("XI");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(11)
-    }).unsubscribe();
+    expect(await getConverted(service, "XI")).toBe(11);
   });
 
-  it('should be 13 for XIII', () => {
+  it('should be 13 for XIII', async () => {
     service.sendNumber("XIII");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(13)
-    }).unsubscribe();
+    expect(await getConverted(service, "XIII")).toBe(13);
   });
 
-  it('should be 60 for LX', () => {
+  it('should be 60 for LX', async () => {
     service.sendNumber("LX");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(60)
-    }).unsubscribe();
+    expect(await getConverted(service, "LX")).toBe(60);
   });
 
-  it('should be 65 for LXV', () => {
+  it('should be 65 for LXV', async () => {
     service.sendNumber("LXV");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(65)
-    }).unsubscribe();
+    expect(await getConverted(service, "LXV")).toBe(65);
   });
 
-  it('should be 4 for IV', () => {
+  it('should be 4 for IV', async () => {
     service.sendNumber("IV");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(4)
-    }).unsubscribe();
+    expect(await getConverted(service, "IV")).toBe(4);
   });
 
-  it('should be 9 for IX', () => {
+  it('should be 9 for IX', async () => {
     service.sendNumber("IX");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(9)
-    }).unsubscribe();
+    expect(await getConverted(service, "IX")).toBe(9);
   });
 
-  it('should be 40 for XL', () => {
+  it('should be 40 for XL', async () => {
     service.sendNumber("XL");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(40)
-    }).unsubscribe();
+    expect(await getConverted(service, "XL")).toBe(40);
   });
 
-  it('should be 90 for XC', () => {
+  it('should be 90 for XC', async () => {
     service.sendNumber("XC");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(90)
-    }).unsubscribe();
+    expect(await getConverted(service, "XC")).toBe(90);
   });
 
-  it('should be 159 for CLIX', () => {
+  it('should be 159 for CLIX', async () => {
     service.sendNumber("CLIX");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(159)
-    }).unsubscribe();
+    expect(await getConverted(service, "CLIX")).toBe(159);
   });
 
-  it('should be 1000 for M', () => {
+  it('should be 1000 for M', async () => {
     service.sendNumber("M");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(1000)
-    }).unsubscribe();
+    expect(await getConverted(service, "M")).toBe(1000);
   });
 
-  it('should be 4000 for MMMM', () => {
-    service.sendNumber("MMMM");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(4000)
-    }).unsubscribe();
-  });
-
-  it('should be 1238 for MCCXXXVIII', () => {
+  it('should be 1238 for MCCXXXVIII', async () => {
     service.sendNumber("MCCXXXVIII");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual(1238)
-    }).unsubscribe();
+    expect(await getConverted(service, "MCCXXXVIII")).toBe(1238);
+  });
+
+  it('should be 3999 for MMMCMXCIX', async () => {
+    service.sendNumber("MMMCMXCIX");
+    expect(await getConverted(service, "MMMCMXCIX")).toBe(3999);
   });
 });

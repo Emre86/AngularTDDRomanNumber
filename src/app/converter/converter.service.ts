@@ -47,7 +47,6 @@ export class ConverterService {
     this.romanMap.set("M", 1000);
     this.romanMap.set("MM", 2000);
     this.romanMap.set("MMM", 3000);
-    this.romanMap.set("MMMM", 4000);
   }
 
   private convertNumbertoArray(digits: string): Array<string> | null {
