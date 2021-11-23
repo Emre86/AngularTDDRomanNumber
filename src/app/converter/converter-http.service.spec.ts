@@ -144,7 +144,7 @@ describe('ConverterHttpService', () => {
     expectConverterReponse(service, httpMock, "XC", mockDigit90);
   });
 
-  it('should be 159 for CLIX', async () => {
+  it('should be 159 for CLIX', () => {
     expectConverterReponse(service, httpMock, "CLIX", mockDigit159);
   });
 
