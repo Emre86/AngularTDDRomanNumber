@@ -1,13 +1,59 @@
 import { TestBed } from '@angular/core/testing';
-
 import { ConverterService } from './converter.service';
+import { take } from 'rxjs/operators';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { environment } from 'src/environments/environment';
+
+const mockDigit1 = { "digit": 1 }
+const mockDigit2 = { "digit": 2 }
+const mockDigit3 = { "digit": 3 }
+const mockDigit30 = { "digit": 30 }
+const mockDigit300 = { "digit": 300 }
+const mockDigit5 = { "digit": 5 }
+const mockDigit50 = { "digit": 50 }
+const mockDigit500 = { "digit": 500 }
+const mockDigit55 = { "digit": 55 }
+const mockDigit550 = { "digit": 550 }
+const mockDigit555 = { "digit": 555 }
+const mockDigit6 = { "digit": 6 }
+const mockDigit8 = { "digit": 8 }
+const mockDigit11 = { "digit": 11 }
+const mockDigit13 = { "digit": 13 }
+const mockDigit60 = { "digit": 60 }
+const mockDigit65 = { "digit": 65 }
+const mockDigit4 = { "digit": 4 }
+const mockDigit9 = { "digit": 9 }
+const mockDigit40 = { "digit": 40 }
+const mockDigit90 = { "digit": 90 }
+const mockDigit159 = { "digit": 159 }
+const mockDigit1000 = { "digit": 1000 }
+const mockDigit1238 = { "digit": 1238 }
+const mockDigit3999 = { "digit": 3999 }
+
+function expectConverted(service: ConverterService, controller: HttpTestingController, romanNumber: string, converted: number, mock: any) {
+  service.sendNumber(romanNumber);
+  const req = controller.expectOne(`${environment.baseUrl}/converter/${romanNumber}`);
+  req.flush(mock);
+  service.receiveNumber().pipe(take(1)).subscribe((reponse) => {
+    expect(reponse).toEqual(converted);
+  });
+}
 
 describe('ConverterService', () => {
+  let httpMock: HttpTestingController;
   let service: ConverterService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [ConverterService]
+    });
+    httpMock = TestBed.inject(HttpTestingController);
     service = TestBed.inject(ConverterService);
+  });
+
+  afterEach(() => {
+    httpMock.verify();
   });
 
   it('should be created', () => {
@@ -20,184 +66,103 @@ describe('ConverterService', () => {
     expect(service.sendNumber).toHaveBeenCalled();
   });
 
-  it('should receive number 0', () => {
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual("")
-    }).unsubscribe();
+  it('should be 1 for I', () => {
+    expectConverted(service, httpMock, "I", 1, mockDigit1);
   });
 
-  it('should be I for I', () => {
-    service.sendNumber("I");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual("I")
-    }).unsubscribe();
+  it('should be 2 for II', () => {
+    expectConverted(service, httpMock, "II", 2, mockDigit2);
   });
 
-  it('should be II for II', () => {
-    service.sendNumber("II");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual("II")
-    }).unsubscribe();
+  it('should be 3 for III', () => {
+    expectConverted(service, httpMock, "III", 3, mockDigit3);
   });
 
-  it('should be III for III', () => {
-    service.sendNumber("III");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual("III")
-    }).unsubscribe();
+  it('should be 30 for XXX', () => {
+    expectConverted(service, httpMock, "XXX", 30, mockDigit30);
   });
 
-  it('should be XXX for XXX', () => {
-    service.sendNumber("XXX");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual("XXX")
-    }).unsubscribe();
+  it('should be 300 for CCC', () => {
+    expectConverted(service, httpMock, "CCC", 300, mockDigit300);
   });
 
-  it('should be CCC for CCC', () => {
-    service.sendNumber("CCC");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual("CCC")
-    }).unsubscribe();
+  it('should be 5 for V', () => {
+    expectConverted(service, httpMock, "V", 5, mockDigit5);
   });
 
-  it('should be V for V', () => {
-    service.sendNumber("V");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual("V")
-    }).unsubscribe();
+  it('should be 50 for L', () => {
+    expectConverted(service, httpMock, "L", 50, mockDigit50);
   });
 
-  it('should be L for L', () => {
-    service.sendNumber("L");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual("L")
-    }).unsubscribe();
+  it('should be 500 for D', () => {
+    expectConverted(service, httpMock, "D", 500, mockDigit500);
   });
 
-  it('should be D for D', () => {
-    service.sendNumber("D");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual("D")
-    }).unsubscribe();
+  it('should be 55 for LV', () => {
+    expectConverted(service, httpMock, "LV", 55, mockDigit55);
   });
 
-  it('should be LV for LV', () => {
-    service.sendNumber("LV");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual("LV")
-    }).unsubscribe();
+  it('should be 550 for DL', () => {
+    expectConverted(service, httpMock, "DL", 550, mockDigit550);
   });
 
-  it('should be DL for DL', () => {
-    service.sendNumber("DL");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual("DL")
-    }).unsubscribe();
+  it('should be 555 for DLV', () => {
+    expectConverted(service, httpMock, "DLV", 555, mockDigit555);
   });
 
-  it('should be DLV for DLV', () => {
-    service.sendNumber("DLV");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual("DLV")
-    }).unsubscribe();
+  it('should be 6 for VI', () => {
+    expectConverted(service, httpMock, "VI", 6, mockDigit6);
   });
 
-  it('should be VI for VI', () => {
-    service.sendNumber("VI");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual("VI")
-    }).unsubscribe();
+  it('should be 8 for VIII', () => {
+    expectConverted(service, httpMock, "VIII", 8, mockDigit8);
   });
 
-  it('should be VIII for VIII', () => {
-    service.sendNumber("VIII");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual("VIII")
-    }).unsubscribe();
+  it('should be 11 for XI', () => {
+    expectConverted(service, httpMock, "XI", 11, mockDigit11);
   });
 
-  it('should be XI for XI', () => {
-    service.sendNumber("XI");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual("XI")
-    }).unsubscribe();
+  it('should be 13 for XIII', () => {
+    expectConverted(service, httpMock, "XIII", 13, mockDigit13);
   });
 
-  it('should be XIII for XIII', () => {
-    service.sendNumber("XIII");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual("XIII")
-    }).unsubscribe();
+  it('should be 60 for LX', () => {
+    expectConverted(service, httpMock, "LX", 60, mockDigit60);
   });
 
-  it('should be LX for LX', () => {
-    service.sendNumber("LX");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual("LX")
-    }).unsubscribe();
+  it('should be 65 for LXV', () => {
+    expectConverted(service, httpMock, "LXV", 65, mockDigit65);
   });
 
-  it('should be LXV for LXV', () => {
-    service.sendNumber("LXV");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual("LXV")
-    }).unsubscribe();
+  it('should be 4 for IV', () => {
+    expectConverted(service, httpMock, "IV", 4, mockDigit4);
   });
 
-  it('should be IV for IV', () => {
-    service.sendNumber("IV");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual("IV")
-    }).unsubscribe();
+  it('should be 9 for IX', () => {
+    expectConverted(service, httpMock, "IX", 9, mockDigit9);
   });
 
-  it('should be IX for IX', () => {
-    service.sendNumber("IX");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual("IX")
-    }).unsubscribe();
+  it('should be 40 for XL', () => {
+    expectConverted(service, httpMock, "XL", 40, mockDigit40);
   });
 
-  it('should be XL for XL', () => {
-    service.sendNumber("XL");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual("XL")
-    }).unsubscribe();
+  it('should be 90 for XC', () => {
+    expectConverted(service, httpMock, "XC", 90, mockDigit90);
   });
 
-  it('should be XC for XC', () => {
-    service.sendNumber("XC");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual("XC")
-    }).unsubscribe();
+  it('should be 159 for CLIX', () => {
+    expectConverted(service, httpMock, "CLIX", 159, mockDigit159);
   });
 
-  it('should be CLIX for CLIX', () => {
-    service.sendNumber("CLIX");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual("CLIX")
-    }).unsubscribe();
+  it('should be 1000 for M', () => {
+    expectConverted(service, httpMock, "M", 1000, mockDigit1000);
   });
 
-  it('should be M for M', () => {
-    service.sendNumber("M");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual("M")
-    }).unsubscribe();
+  it('should be 1238 for MCCXXXVIII', () => {
+    expectConverted(service, httpMock, "MCCXXXVIII", 1238, mockDigit1238);
   });
 
-  it('should be MMMM for MMMM', () => {
-    service.sendNumber("MMMM");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual("MMMM")
-    }).unsubscribe();
-  });
-
-  it('should be MCCXXXVIII for MCCXXXVIII', () => {
-    service.sendNumber("MCCXXXVIII");
-    service.receiveNumber().subscribe((convertedNumber) => {
-      expect(convertedNumber).toEqual("MCCXXXVIII")
-    }).unsubscribe();
+  it('should be 3999 for MMMCMXCIX', () => {
+    expectConverted(service, httpMock, "MMMCMXCIX", 3999, mockDigit3999);
   });
 });
